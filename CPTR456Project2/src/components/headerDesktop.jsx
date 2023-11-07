@@ -1,4 +1,4 @@
-const headerDesktop = () => {
+const HeaderDesktop = () => {
     return <>
         <div>bruh</div>
         <div 
@@ -6,9 +6,9 @@ const headerDesktop = () => {
         height={100}
         color={white}
         >
-            this div is the headerDesktop component
+            <p>this div is the headerDesktop component</p>
         </div>
     </>
 
 }
-export default headerDesktop
+export default HeaderDesktop;

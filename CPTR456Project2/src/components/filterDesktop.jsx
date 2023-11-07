@@ -1,4 +1,4 @@
-const filterDesktop = () => {
+const FilterDesktop = () => {
     return <>
         <div 
         width={100}
@@ -10,4 +10,4 @@ const filterDesktop = () => {
     </>
 
 }
-export default filterDesktop
+export default FilterDesktop;

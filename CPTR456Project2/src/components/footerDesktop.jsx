@@ -1,13 +1,13 @@
-const footerDesktop = () => {
+const FooterDesktop = () => {
     return <>
         <div 
         width={100}
         height={100}
         color={pblue}
         >
-            this div is the footerDesktop component
+            <p>this div is the footerDesktop component</p>
         </div>
     </>
 
 }
-export default footerDesktop
+export default FooterDesktop;

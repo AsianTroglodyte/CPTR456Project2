@@ -1,13 +1,13 @@
-const cartDesktop = () => {
+const CartDesktop = () => {
     return <>
         <div 
         width={100}
         height={100}
         color={white}
         >
-                        this div is the cartDesktop component
+            <p>this div is the cartDesktop component</p>
         </div>
     </>
 
 }
-export default cartDesktop
+export default CartDesktop;

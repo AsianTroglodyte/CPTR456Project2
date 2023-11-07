@@ -1,13 +1,13 @@
-const videoAreaDesktop = () => {
+const VideoAreaDesktop = () => {
     return <>
         <div 
         width={100}
         height={100}
         color={white}
         >
-            this div is the videoAreaDesktop component
+            <p>this div is the videoAreaDesktop component</p>
         </div>
     </>
 
 }
-export default videoAreaDesktop
+export default VideoAreaDesktop;

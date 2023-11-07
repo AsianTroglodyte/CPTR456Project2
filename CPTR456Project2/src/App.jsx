@@ -1,18 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import cartDesktop from './components/cartDesktop'
-import filterDesktop from './components/filterDesktop'
-import footerDesktop from './components/footerDesktop'
-import headerDesktop from './components/headerDesktop'
-import videoAreaDesktop from './components/videoAreaDesktop'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import CartDesktop from './components/CartDesktop';
+import FilterDesktop from './components/FilterDesktop';
+import FooterDesktop from './components/FooterDesktop';
+import HeaderDesktop from './components/HeaderDesktop';
+import VideoAreaDesktop from './components/VideoAreaDesktop';
 
+// import {CartDesktop} from './components/CartDesktop'
+// import {FilterDesktop} from './components/FilterDesktop'
+// import {FooterDesktop} from './components/FooterDesktop'
+// import {HeaderDesktop} from './components/HeaderDesktop'
+// import {VideoAreaDesktop} from './components/VideoAreaDesktop'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      {/* <CartDesktop />
+      <FilterDesktop />
+      <FooterDesktop />
+      <HeaderDesktop />
+      <VideoAreaDesktop /> */}
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
