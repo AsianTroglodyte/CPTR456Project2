@@ -5,7 +5,7 @@ const filterDesktop = () => {
         height={100}
         color={red}
         >
-            this div is the filterDesktop component
+            <p>this div is the filterDesktop component</p>
         </div>
     </>
 
