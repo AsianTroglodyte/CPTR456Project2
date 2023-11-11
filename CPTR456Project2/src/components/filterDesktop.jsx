@@ -1,13 +1,18 @@
+import TuneIcon from '@mui/icons-material/Tune';
+
 const FilterDesktop = () => {
-    return <>
-        <div 
-        width={100}
-        height={100}
-        color={red}
+    return (
+    <>
+        <div style={{
+            backgroundColor: "#78938A",
+            width: "50px",
+            paddingTop: "10px"
+        }}
         >
-            <p>this div is the filterDesktop component</p>
+            <TuneIcon />
         </div>
     </>
-
+    )
 }
+
 export default FilterDesktop;
