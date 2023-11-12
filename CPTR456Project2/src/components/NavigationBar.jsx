@@ -12,6 +12,8 @@ const NavigationBar = (props) => {
                 flexDirection: "column",
                 justifyContent: "flex-start",
 
+                height: "100%",
+
                 backgroundColor: "#78938A",
                 size: "auto"
             }}>

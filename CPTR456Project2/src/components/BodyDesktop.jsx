@@ -7,9 +7,13 @@ import FilterDrawerDesktop from './FilterDrawerDesktop'
 import "./Button.css"
 
 const BodyDeskTop = (props) => {
-    const {videoData} = props
+    const {OriginalVideoData} = props
+    const [CurrentVideoData, setCurrentVideoData] = useState(OriginalVideoData)
     const [isCartDrawerOpen, setCartIsDrawerOpen] = useState(false)
     const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
+    const [priceFilter, setPriceFilter] = useState("none")
+    const [durationFilter, setDurationFilter] = useState("none")
+    const [titleFilter, setTitleFilter] = useState("none")
     const [totalCost, setTotalCost] = useState(0)
 
     const cartClickHandler = () => {
@@ -18,6 +22,21 @@ const BodyDeskTop = (props) => {
 
     const filterClickHandler = () => {
         setIsFilterDrawerOpen(!(isFilterDrawerOpen))
+    }
+
+    const priceFilterChangeHandler = (event) => {
+        setPriceFilter(event.target.value)
+        if (priceFilter == "Free") {
+            
+        }
+    }
+
+    const durationFilterChangeHandler = (event) => {
+        setDurationFilter(event.target.value)
+    }
+
+    const titleFilterChangeHandler = (event) => {
+        setTitleFilter(event.target.value)
     }
 
     const costHandler = () => {
@@ -32,7 +51,8 @@ const BodyDeskTop = (props) => {
                 flexDirection: "row",
                 top: "100px",
                 left: "0",
-                width: "100%"
+                width: "100%",
+                height: "100%"
             }}>
 
                 <CartDrawerDesktop 
@@ -45,6 +65,15 @@ const BodyDeskTop = (props) => {
                 <FilterDrawerDesktop 
                     isFilterDrawerOpen = {isFilterDrawerOpen} 
                     filterClickHandler = {filterClickHandler} 
+
+                    priceFilter = {priceFilter}
+                    priceFilterChangeHandler = {priceFilterChangeHandler}
+                    
+                    durationFilter = {durationFilter}
+                    durationFilterChangeHandler = {durationFilterChangeHandler}
+
+                    titleFilter = {titleFilter}
+                    titleFilterChangeHandler = {titleFilterChangeHandler}
                 />
 
                 <NavigationBar 
@@ -52,10 +81,10 @@ const BodyDeskTop = (props) => {
                     cartClickHandler = {cartClickHandler} 
                     isFilterDrawerOpen = {isFilterDrawerOpen}
                     filterClickHandler = {filterClickHandler}
-                    videoData = {videoData}
+                    CurrentVideoData = {CurrentVideoData}
                 />
 
-                <VideoAreaDesktop videoData={videoData}/>
+                <VideoAreaDesktop CurrentVideoData={CurrentVideoData}/>
             </div>
         </>
     )

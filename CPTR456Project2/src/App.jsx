@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 import BodyDesktop from './components/BodyDesktop'
-import FooterDesktop from './components/FooterDesktop'
 import HeaderDesktop from './components/HeaderDesktop'
 import {Stack} from '@mui/material'
 import data from './data/videoData.json'
@@ -17,7 +16,8 @@ function App() {
       width: "100%",
       height: "100%",
       top: "0px",
-      left:"0px"
+      left:"0px",
+      backgroundColor: "black"
     }}>
       <HeaderDesktop/>
       <BodyDesktop videoData={videoData}/>

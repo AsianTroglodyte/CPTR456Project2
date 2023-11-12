@@ -1,7 +1,7 @@
 import VideoBox from "./VideoBox"
 
 const VideoAreaDesktop = (props) => {
-    const {videoData} = props
+    const {CurrentVideosData} = props
     return (
         <>
             <div 
@@ -16,13 +16,13 @@ const VideoAreaDesktop = (props) => {
                     left: "0px",
 
                     height: "100%",
-                    width: "auto",
+                    width: "100%",
                     padding: "20px",
 
                     gap: "20px"
             }}>
-            {videoData ? videoData.map( (videoDatum) => {
-                return <VideoBox videoDatum={videoDatum} key={videoDatum.id}/>
+            {CurrentVideosData ? CurrentVideosData.map( (VideosDatum) => {
+                return <VideoBox VideosDatum={VideosDatum} key={VideosDatum.id}/>
             }) : null}
 
             </div>
