@@ -36,6 +36,7 @@ const VideoBox = (props) => {
                             color: "black", 
                             margin: "0px", 
                             padding: "0px",
+                            alignContent: "left",
 
                             fontSize: "10px",
                             fontWeight: "bold"

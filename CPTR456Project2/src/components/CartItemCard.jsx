@@ -12,7 +12,7 @@ const CartItemCard = () => {
                 backgroundColor: "white",
                 height: "50px"
             }}>
-                <div style={{padding: "5px"}}>
+                <div style={{padding: "5px  "}}>
                     <p style={{margin: "0px", padding: "0px", fontWeight: "bold", fontSize:"14px", color:"black"}}>Title</p>
                     <p style={{margin: "0px", padding: "0px", fontWeight: "bold", color:"grey", fontSize:"14px"}}>price</p>
                 </div>

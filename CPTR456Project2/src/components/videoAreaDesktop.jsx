@@ -10,10 +10,13 @@ const VideoAreaDesktop = (props) => {
 
                     display: "flex",
                     flexWrap: "wrap",
-                    justifyContent: "left",
+                    justifyContent: "center",
 
-                    height: "400px",
-                    width: "500px",
+                    top: "100px",
+                    left: "0px",
+
+                    height: "100%",
+                    width: "auto",
                     padding: "20px",
 
                     gap: "20px"

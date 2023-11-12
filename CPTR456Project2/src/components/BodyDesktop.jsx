@@ -1,23 +1,29 @@
 import * as React from 'react'
 import { useState } from 'react'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import Button from '@mui/material/Button';
 import CartDrawerDesktop from "./CartDrawerDesktop"
 import VideoAreaDesktop from "./VideoAreaDesktop"
-import FilterDesktop from "./FilterDesktop"
+import NavigationBar from "./NavigationBar"
+import FilterDrawerDesktop from './FilterDrawerDesktop'
+import "./Button.css"
 
 const BodyDeskTop = (props) => {
     const {videoData} = props
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const [isCartDrawerOpen, setCartIsDrawerOpen] = useState(false)
+    const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
     const [totalCost, setTotalCost] = useState(0)
 
     const cartClickHandler = () => {
-        setIsDrawerOpen(!(isDrawerOpen))
+        setCartIsDrawerOpen(!(isCartDrawerOpen))
+    }
+
+    const filterClickHandler = () => {
+        setIsFilterDrawerOpen(!(isFilterDrawerOpen))
     }
 
     const costHandler = () => {
         setTotalCost(0)
     }
+
 
     return (
         <>
@@ -25,39 +31,31 @@ const BodyDeskTop = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 top: "100px",
+                left: "0",
                 width: "100%"
             }}>
 
-            <CartDrawerDesktop 
-                isDrawerOpen = {isDrawerOpen} 
-                cartClickHandler = {cartClickHandler} 
-                totalCost = {totalCost}
-                costHandler = {costHandler}
-            />
+                <CartDrawerDesktop 
+                    isCartDrawerOpen = {isCartDrawerOpen} 
+                    cartClickHandler = {cartClickHandler} 
+                    totalCost = {totalCost}
+                    costHandler = {costHandler}
+                />
 
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                backgroundColor: "#78938A",
-                size: "auto"
-            }}>
-                <Button style={{
-                    margin: "15px 0px 0px 0px", 
-                    padding: "0px 0px 0px 0px", 
-                    fontWeight: "bold", 
-                    backgroundColor: "#78938A",
-                    fontSize: "50",
-                    color:"#78938A"
-                }}
-                onClick={() => cartClickHandler()}
-                >
-                    <ShoppingCartIcon sx={{fontSize: 30, color: "white"}}/>
-                </Button>
-            </div>
+                <FilterDrawerDesktop 
+                    isFilterDrawerOpen = {isFilterDrawerOpen} 
+                    filterClickHandler = {filterClickHandler} 
+                />
 
-            <VideoAreaDesktop videoData={videoData}/>
-            <FilterDesktop />
+                <NavigationBar 
+                    isCartDrawerOpen = {isCartDrawerOpen} 
+                    cartClickHandler = {cartClickHandler} 
+                    isFilterDrawerOpen = {isFilterDrawerOpen}
+                    filterClickHandler = {filterClickHandler}
+                    videoData = {videoData}
+                />
+
+                <VideoAreaDesktop videoData={videoData}/>
             </div>
         </>
     )

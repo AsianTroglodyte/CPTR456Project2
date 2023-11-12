@@ -10,7 +10,7 @@ const FooterDesktop = () => {
             position: "fixed",
             left: "0",
             bottom: "0",
-            width: "100%",
+            width: "100vw",
             height: "30px",
 
             backgroundColor: "#525E75"

@@ -1,12 +1,11 @@
 import { Drawer, Box, Typography, } from '@mui/material'
-import useState from 'react'
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CartItemCard from './CartItemCard';
 import Button from '@mui/material/Button';
 
 const CartDrawerDesktop = (props) => {
-    const {isDrawerOpen, cartClickHandler, totalCost, setTotalCost} = props
+    const {isCartDrawerOpen, cartClickHandler, totalCost, setTotalCost} = props
     return (
         <>
             <Drawer 
@@ -14,7 +13,7 @@ const CartDrawerDesktop = (props) => {
                     sx: {backgroundColor: "#78938A"},
                 }}
                 anchor='left' 
-                open={isDrawerOpen} 
+                open={isCartDrawerOpen} 
                 onClose={() => cartClickHandler()}
             >
 
@@ -34,7 +33,7 @@ const CartDrawerDesktop = (props) => {
                         marginTop: "10px",
                         marginBottom: "10px"
                     }}>
-                        <p style={{margin: "0px", padding: "0px", fontWeight: "bold", color:"white"}}>Cart</p>
+                        <p style={{margin: "0px", padding: "0px", fontWeight: "bold", color:"white"}}>CART</p>
                         <ShoppingCartIcon style={{fontSize: 30, color: "white"}}/>
                     </div>
 
@@ -72,7 +71,7 @@ const CartDrawerDesktop = (props) => {
                             fontWeight: "bold", 
                             color:"white"
                         }}>
-                            total cost: ${totalCost}
+                            Total cost: ${totalCost}
                         </p>
                     </div>
 
