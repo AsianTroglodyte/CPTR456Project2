@@ -16,8 +16,7 @@ function App() {
       width: "100%",
       height: "100%",
       top: "0px",
-      left:"0px",
-      backgroundColor: "black"
+      left:"0px"
     }}>
       <HeaderDesktop/>
       <BodyDesktop videoData={videoData}/>

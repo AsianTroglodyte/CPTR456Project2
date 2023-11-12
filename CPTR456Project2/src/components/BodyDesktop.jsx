@@ -7,13 +7,12 @@ import FilterDrawerDesktop from './FilterDrawerDesktop'
 import "./Button.css"
 
 const BodyDeskTop = (props) => {
-    const {OriginalVideoData} = props
-    const [CurrentVideoData, setCurrentVideoData] = useState(OriginalVideoData)
+    const {videoData} = props
     const [isCartDrawerOpen, setCartIsDrawerOpen] = useState(false)
-    const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
     const [priceFilter, setPriceFilter] = useState("none")
     const [durationFilter, setDurationFilter] = useState("none")
     const [titleFilter, setTitleFilter] = useState("none")
+    const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
     const [totalCost, setTotalCost] = useState(0)
 
     const cartClickHandler = () => {
@@ -43,7 +42,6 @@ const BodyDeskTop = (props) => {
         setTotalCost(0)
     }
 
-
     return (
         <>
             <div style={{
@@ -51,8 +49,7 @@ const BodyDeskTop = (props) => {
                 flexDirection: "row",
                 top: "100px",
                 left: "0",
-                width: "100%",
-                height: "100%"
+                width: "100%"
             }}>
 
                 <CartDrawerDesktop 
@@ -65,7 +62,7 @@ const BodyDeskTop = (props) => {
                 <FilterDrawerDesktop 
                     isFilterDrawerOpen = {isFilterDrawerOpen} 
                     filterClickHandler = {filterClickHandler} 
-
+                
                     priceFilter = {priceFilter}
                     priceFilterChangeHandler = {priceFilterChangeHandler}
                     
@@ -81,10 +78,10 @@ const BodyDeskTop = (props) => {
                     cartClickHandler = {cartClickHandler} 
                     isFilterDrawerOpen = {isFilterDrawerOpen}
                     filterClickHandler = {filterClickHandler}
-                    CurrentVideoData = {CurrentVideoData}
+                    videoData = {videoData}
                 />
 
-                <VideoAreaDesktop CurrentVideoData={CurrentVideoData}/>
+                <VideoAreaDesktop videoData={videoData}/>
             </div>
         </>
     )
