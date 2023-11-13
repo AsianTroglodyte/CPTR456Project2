@@ -1,6 +1,7 @@
 import { Drawer, Checkbox, RadioGroup, FormControlLabel, Radio} from '@mui/material'
 import TuneIcon from '@mui/icons-material/Tune'
 import './FilterDrawerDesktop.css'
+import TextField from '@mui/material/TextField';
 
 const FilterDrawerDesktop = (props) => {
     const {isFilterDrawerOpen, 
@@ -10,8 +11,7 @@ const FilterDrawerDesktop = (props) => {
         durationFilter,
         durationFilterChangeHandler,
         titleFilter,
-        titleFilterChangeHandler
-        } = props
+        titleFilterChangeHandler,} = props
     return (
         <>
             <Drawer 
@@ -22,6 +22,7 @@ const FilterDrawerDesktop = (props) => {
                 open={isFilterDrawerOpen} 
                 onClose={() => filterClickHandler()}
             >
+                {/*this div is a container for all the items contained within the filter drawer*/}
                 <div style={{
                     display: "flex",
                     flexDirection: "column",
@@ -31,7 +32,7 @@ const FilterDrawerDesktop = (props) => {
                     height: "100%",
                     width: "15rem"
                 }}>
-                    {/*this is the title of the filter section*/}
+                    {/*this div contains the title of the filter section*/}
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -60,10 +61,12 @@ const FilterDrawerDesktop = (props) => {
                         >
                             <FormControlLabel value="Free" control={<Radio  />} sx={{fontColor: "white"}}label="Free" />
                             <FormControlLabel value="Paid" control={<Radio  />} label="Paid" />
-                            <FormControlLabel value="low to high" control={<Radio  />} label="low to high" />
-                            <FormControlLabel value="high to low" control={<Radio  />} label="high to low" />
+                            <FormControlLabel value="Low to high" control={<Radio  />} label="Low to high" />
+                            <FormControlLabel value="High to low" control={<Radio  />} label="High to low" />
+                            <FormControlLabel value="None" control={<Radio  />} label="none" />
                         </RadioGroup>
                     </div>
+
                     {/*this is the Duration filter section*/}
                     <div style={{
                         display: "flex",
@@ -78,11 +81,12 @@ const FilterDrawerDesktop = (props) => {
                             value={durationFilter}
                             onChange={durationFilterChangeHandler}
                         >
-                            <FormControlLabel value="under 10 seconds" control={<Radio  />} label="under 10 seconds" />
-                            <FormControlLabel value="11-20 seconds" control={<Radio  />} label="11-20 seconds" />
-                            <FormControlLabel value="21-30 secons" control={<Radio  />} label="21-30 seconds" />
-                            <FormControlLabel value="shortest to longest" control={<Radio  />} label="shortest to longest" />
-                            <FormControlLabel value="longest to shortest" control={<Radio  />} label="longest to shortest" />
+                            <FormControlLabel value="Under 10 seconds" control={<Radio  />} label="Under 10 seconds" />
+                            <FormControlLabel value="10-20 seconds" control={<Radio  />} label="10-20 seconds" />
+                            <FormControlLabel value="Over 20 seconds" control={<Radio  />} label= "Over 20 seconds" />
+                            <FormControlLabel value="Shortest to longest" control={<Radio  />} label="Shortest to longest" />
+                            <FormControlLabel value="Longest to shortest" control={<Radio  />} label="Longest to shortest" />
+                            <FormControlLabel value="None" control={<Radio  />} label="none" />
                         </RadioGroup>
                     </div>
 
@@ -103,6 +107,7 @@ const FilterDrawerDesktop = (props) => {
                         >
                             <FormControlLabel value="Ascending A-Z" control={<Radio  />} label="Ascending A-Z" />
                             <FormControlLabel value="Descending Z-A" control={<Radio  />} label="Descending Z-A" />
+                            <FormControlLabel value="None" control={<Radio  />} label="none" />
                         </RadioGroup>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import CartDrawerDesktop from "./CartDrawerDesktop"
 import VideoAreaDesktop from "./VideoAreaDesktop"
 import NavigationBar from "./NavigationBar"
@@ -7,13 +7,26 @@ import FilterDrawerDesktop from './FilterDrawerDesktop'
 import "./Button.css"
 
 const BodyDeskTop = (props) => {
-    const {videoData} = props
-    const [isCartDrawerOpen, setCartIsDrawerOpen] = useState(false)
+    const {videoData, setVideoData} = props
+
+    // filter related states
     const [priceFilter, setPriceFilter] = useState("none")
     const [durationFilter, setDurationFilter] = useState("none")
     const [titleFilter, setTitleFilter] = useState("none")
+
+    // drawer related states
+    const [isCartDrawerOpen, setCartIsDrawerOpen] = useState(false)
     const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
-    const [totalCost, setTotalCost] = useState(0)
+
+    // state for liked videos
+    const [isLiked, setIsLiked] = useState(new Array(videoData.length))
+
+    // state for querying videos
+    const [query, setQuery] = useState("")
+
+    // state for items in cart
+    const [cartItems, setCartItems] = useState([])
+
 
     const cartClickHandler = () => {
         setCartIsDrawerOpen(!(isCartDrawerOpen))
@@ -25,9 +38,6 @@ const BodyDeskTop = (props) => {
 
     const priceFilterChangeHandler = (event) => {
         setPriceFilter(event.target.value)
-        if (priceFilter == "Free") {
-            
-        }
     }
 
     const durationFilterChangeHandler = (event) => {
@@ -38,39 +48,65 @@ const BodyDeskTop = (props) => {
         setTitleFilter(event.target.value)
     }
 
-    const costHandler = () => {
-        setTotalCost(0)
+    const queryChangeHandler = (event) => {
+        setQuery(event.target.value)
+    }
+
+    const isLikedHandler = (id) => {
+        
+    }
+
+    const addItemHandler = (itemId, itemName, itemPrice) => {
+        for (let i = 0; i < cartItems.length; i++){
+            if (cartItems[i].id == itemId){
+                return 0;
+            }
+        }
+        setCartItems([...cartItems, {"id": itemId, "name": itemName, "price": itemPrice}])
+    }   
+
+    const removeItemHandler = (itemId) => {
+        setCartItems(cartItems.filter(cartItem => {
+            return cartItem.id != itemId
+        }))
     }
 
     return (
         <>
+            {cartItems ? cartItems.map((cartItem) =>{return cartItem.itemName}): null}
             <div style={{
                 display: "flex",
                 flexDirection: "row",
+                width: "auto",
+                minWidth: "100vw",
                 top: "100px",
                 left: "0",
-                width: "100%"
             }}>
 
                 <CartDrawerDesktop 
                     isCartDrawerOpen = {isCartDrawerOpen} 
                     cartClickHandler = {cartClickHandler} 
-                    totalCost = {totalCost}
-                    costHandler = {costHandler}
+
+                    cartItems = {cartItems}
+
+                    removeItemHandler = {removeItemHandler}
                 />
 
                 <FilterDrawerDesktop 
                     isFilterDrawerOpen = {isFilterDrawerOpen} 
                     filterClickHandler = {filterClickHandler} 
-                
+
                     priceFilter = {priceFilter}
                     priceFilterChangeHandler = {priceFilterChangeHandler}
-                    
+
                     durationFilter = {durationFilter}
                     durationFilterChangeHandler = {durationFilterChangeHandler}
 
                     titleFilter = {titleFilter}
                     titleFilterChangeHandler = {titleFilterChangeHandler}
+
+                    query = {query}
+                    setQuery = {setQuery}
                 />
 
                 <NavigationBar 
@@ -81,7 +117,18 @@ const BodyDeskTop = (props) => {
                     videoData = {videoData}
                 />
 
-                <VideoAreaDesktop videoData={videoData}/>
+
+
+                <VideoAreaDesktop 
+                    videoData={videoData} 
+                    priceFilter={priceFilter} 
+                    durationFilter={durationFilter} 
+                    titleFilter={titleFilter} 
+                    query={query}
+                    queryChangeHandler={queryChangeHandler}
+                    addItemHandler = {addItemHandler}
+                />
+
             </div>
         </>
     )

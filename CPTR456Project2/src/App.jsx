@@ -8,18 +8,25 @@ import data from './data/videoData.json'
 function App() {
   const [count, setCount] = useState(0)
   const [videoData, setvideoData] = useState(data)
+  const OriginalVideoData = data
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   return (
     <>
     <div style={{
-      width: "100%",
-      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-start",
+
+      minWidth: "100vw",
+      minHeight: "100vh",
+
       top: "0px",
-      left:"0px"
+      left:"0px",
+      backgroundColor: "white"
     }}>
       <HeaderDesktop/>
-      <BodyDesktop videoData={videoData}/>
+      <BodyDesktop videoData={videoData} OriginalVideoData={OriginalVideoData}/>
     </div>
 
     {/* <FooterDesktop />  */}

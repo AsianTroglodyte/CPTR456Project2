@@ -1,11 +1,15 @@
 import { Drawer, Box, Typography, } from '@mui/material'
-
+import { useState, useEffect } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CartItemCard from './CartItemCard';
 import Button from '@mui/material/Button';
 
 const CartDrawerDesktop = (props) => {
-    const {isCartDrawerOpen, cartClickHandler, totalCost, setTotalCost} = props
+    const {isCartDrawerOpen, 
+            cartClickHandler, 
+            cartItems,
+            removeItemHandler} = props
+    
     return (
         <>
             <Drawer 
@@ -16,8 +20,9 @@ const CartDrawerDesktop = (props) => {
                 open={isCartDrawerOpen} 
                 onClose={() => cartClickHandler()}
             >
-
-                <div style={{
+                
+                {/*this div contains all the elements within the drawer*/}
+                <div style={{       
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-start",
@@ -25,6 +30,8 @@ const CartDrawerDesktop = (props) => {
                     height: "100%",
                     width: "15rem"
                 }}>
+
+                    {/*this div contains the cart title and the cart icon*/}
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -37,6 +44,7 @@ const CartDrawerDesktop = (props) => {
                         <ShoppingCartIcon style={{fontSize: 30, color: "white"}}/>
                     </div>
 
+                    {/*this div contains the cart items*/}
                     <div style={{
                         display: "flex",
                         flexDirection: "column",
@@ -44,52 +52,39 @@ const CartDrawerDesktop = (props) => {
                         backgroundColor: "Gainsboro",
                         overflow: "auto",
                         height: "75%",
+                        width: "100%",
                         gap: "3px"
                     }}>
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-                        <CartItemCard />
-
+                    {cartItems.map((cartItem) => {
+                        return <CartItemCard 
+                            cartItem={cartItem} 
+                            key={cartItem.id} 
+                            removeItemHandler={removeItemHandler} />
+                    })}
                     </div>
 
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
+                    <p style={{
+                        margin: "10px 0px 0px 0px", 
+                        padding: "0px", 
+                        fontWeight: "bold", 
+                        color:"white",
+                        textAlign: "center"
                     }}>
-                        <p style={{
-                            margin: "10px 0px 0px 0px", 
-                            padding: "0px", 
-                            fontWeight: "bold", 
-                            color:"white"
-                        }}>
-                            Total cost: ${totalCost}
-                        </p>
-                    </div>
+                        Total cost: ${cartItems.reduce((accumulator, currentValue) => {
+                                        console.log(currentValue.price)
+                                        return accumulator + currentValue.price
+                                    },0).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]}
+                    </p>
 
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
+                    <Button style={{
+                        margin: "10px 0px 0px 0px", 
+                        padding: "2px 10px 2px 10px", 
+                        fontWeight: "bold", 
+                        backgroundColor: "white",
+                        color:"#78938A",
                     }}>
-                        <Button style={{
-                            margin: "10px 0px 0px 0px", 
-                            padding: "2px 10px 2px 10px", 
-                            fontWeight: "bold", 
-                            backgroundColor: "white",
-                            color:"#78938A"
-                        }}>
-                            purchase
-                        </Button>
-                    </div>
+                        purchase
+                    </Button>
                 </div>
             </Drawer>
         </>
